@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of blomstra/oauth-slack.
+ * This file is part of blomstra/oauth-logto.
  *
  * Copyright (c) 2022 Team Blomstra.
  *
@@ -23,14 +23,14 @@ class SlackResourceOwner implements ResourceOwnerInterface
         $this->response = $response;
     }
 
+    public function getId(): ?string
+    {
+        return Arr::get($this->response, 'sub');
+    }
+
     public function toArray()
     {
         return $this->response;
-    }
-
-    public function getId(): ?string
-    {
-        return Arr::get($this->response, 'https://slack.com/user_id');
     }
 
     public function getName(): ?string
@@ -53,8 +53,33 @@ class SlackResourceOwner implements ResourceOwnerInterface
         return Arr::get($this->response, 'email');
     }
 
-    public function getImage192(): ?string
+    public function getPicture(): ?string
     {
-        return Arr::get($this->response, 'https://slack.com/user_image_192');
+        return Arr::get($this->response, 'picture');
+    }
+
+    public function getUsername(): ?string
+    {
+        return Arr::get($this->response, 'username');
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return Arr::get($this->response, 'phone_number');
+    }
+
+    public function getAddress(): ?array
+    {
+        return Arr::get($this->response, 'address');
+    }
+
+    public function getCustomData(): ?array
+    {
+        return Arr::get($this->response, 'custom_data');
+    }
+
+    public function getIdentities(): ?array
+    {
+        return Arr::get($this->response, 'identities');
     }
 }
