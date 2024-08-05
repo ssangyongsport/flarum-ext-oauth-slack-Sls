@@ -20,7 +20,7 @@ class SlackProvider extends AbstractProvider
 {
     public function getBaseAuthorizationUrl()
     {
-        return 'https://auth.ssangyongsports.eu.org/oidc/auth';
+        return 'https://auth.ssangyongsports.eu.org/oidc';
     }
 
     public function getBaseAccessTokenUrl(array $params)
